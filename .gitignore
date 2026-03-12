@@ -1,37 +1,35 @@
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Environment Variables
+# Common
+.DS_Store
 .env
-.venv
-venv/
-ENV/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Logs and temporary files
-*.log
-*.txt
-*.docx
-__pycache__/
-.pytest_cache/
+# Backend (Python)
+backend/__pycache__/
+backend/*.py[cod]
+backend/*$py.class
+backend/.env
+backend/.venv
+backend/venv/
+backend/env/
+backend/audit_logs.json
+backend/audit_logs_backup.json
+backend/.pytest_cache/
+backend/.coverage
+backend/htmlcov/
+
+# Frontend (Node/Vite)
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/*.local
+frontend/.vite/
+frontend/.cache/
+
+# IDEs
 .vscode/
+.idea/
+*.swp
+*.swo

@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --font-playfair: 'Playfair Display', Georgia, serif;
+    --font-cormorant: 'Cormorant Garamond', Garamond, serif;
+    --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-space: 'Space Grotesk', sans-serif;
+    --font-redhat: 'Red Hat Display', sans-serif;
+    --font-leckerli: 'Leckerli One', cursive;
+
+    /* Dashboard Theme Variables mapped to Landing Page Tokens */
+    --primary: #17141F;
+    /* Deep Violet Black - Sidebar Background */
+    --primary-light: #231E30;
+    /* Lighter Violet Black - Sidebar Hover */
+    --accent: #7C3AED;
+    /* Violet - Active Items/Buttons */
+    --background: #F8F7F4;
+    /* Paper - Main Background */
+    --text-primary: #0A0A0B;
+    /* Ink - Main Text */
+    --text-secondary: #94949C;
+    /* Lighter Cool Gray - Muted Text */
+    --danger: #EF4444;
+    /* Danger Red */
+    --border: #E8E6E3;
+    /* Mist - Borders */
+    --surface: #ffffff;
+    /* Paper - Component surfaces */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    /* Subtle shadows */
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+}
+
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    @apply bg-paper text-ink overflow-x-hidden;
+}
+
+::selection {
+    @apply bg-accent-violet text-paper;
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@layer utilities {
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .text-gradient-violet {
+        background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 50%, #06B6D4 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .text-gradient-warm {
+        background: linear-gradient(135deg, #F97066 0%, #D4AF37 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .glow-btn {
+        @apply relative overflow-hidden bg-[#1a1a1a] text-white px-10 py-4 rounded-full font-display font-bold text-lg tracking-wide transition-all duration-300;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    }
+
+    .glow-btn:hover {
+        @apply -translate-y-0.5 bg-black;
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.4), 0 0 50px rgba(255, 255, 255, 0.2);
+    }
+
+    .glow-btn[data-state="clicked"] {
+        @apply scale-95 opacity-90;
+    }
+
+    /* Shine sweep effect */
+    .glow-btn::before {
+        content: '';
+        @apply absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent;
+        transition: transform 0.6s ease-in-out;
+    }
+
+    .glow-btn:hover::before {
+        @apply translate-x-full;
+    }
+
+    .glow-btn::after {
+        content: '';
+        @apply absolute inset-0 bg-white/5 opacity-0 transition-opacity duration-300;
+    }
+
+    .glow-btn:hover::after {
+        @apply opacity-100;
+    }
+
+    @keyframes auraPulse {
+
+        0%,
+        100% {
+            opacity: 0.1;
+            transform: scale(1);
+        }
+
+        50% {
+            opacity: 0.3;
+            transform: scale(1.1);
+        }
+    }
+
+    .animate-aura {
+        animation: auraPulse 8s ease-in-out infinite;
+    }
+
+    .gpu-accel {
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+        will-change: transform, opacity;
+    }
+
+    .optimize-gpu {
+        will-change: transform;
+    }
+}
